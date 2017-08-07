@@ -123,7 +123,7 @@ class Counter extends AbstractTask {
 		$lastCounterArray = [];
 		foreach ($topicCount as $topicUid => $postCount) {
 			if ($lastCounter != $postCount) {
-				$query = 'UPDATE tx_typo3forum_domain_model_forum_topic SET post_count = ' . (int)$lastCounter . ' WHERE uid IN (' . implode(',', $lastCounterArray) . ')';
+				$query = 'UPDATE tx_typo3forum_domain_model_forum_topic SET post_count = ' . (int)$postCount . ' WHERE uid ='.$topicUid;
 				$GLOBALS['TYPO3_DB']->sql_query($query);
 				$lastCounterArray = [];
 			}
